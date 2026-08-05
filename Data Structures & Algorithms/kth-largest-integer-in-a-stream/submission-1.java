@@ -1,0 +1,21 @@
+class KthLargest {
+    PriorityQueue<Integer> q;
+    int n;
+    int kth;
+    public KthLargest(int k, int[] nums) {
+        this.kth = k;
+        q = new PriorityQueue<>();
+        for(int num : nums){
+            add(num);
+        }
+    }
+    
+    public int add(int val) {
+        q.offer(val);
+        Stack<Integer> stack = new Stack<>();
+        if(q.size() > kth){
+            q.poll();
+        }
+        return q.peek();
+    }
+}
